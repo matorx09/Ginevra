@@ -1,4 +1,4 @@
-package matrici;
+package gestioneMatrici_ordinamenti;
 
 
 import java.util.Scanner;
