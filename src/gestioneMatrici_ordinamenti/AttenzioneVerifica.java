@@ -189,6 +189,15 @@ Stampare a video il terzo output.
         return array;
     }
     
+        //stampa di un array qualsiasi ******************************************************************************************
+    public static void stampaArrayStringhe(String []array){
+        
+        for(int i = 0; i < array.length; i++){
+            System.out.print(" " + array[i]);
+        }
+        System.out.println("");
+    }
+    
     //stampa di un array qualsiasi ******************************************************************************************
     public static void stampaArray(int []array){
         
@@ -257,6 +266,37 @@ Stampare a video il terzo output.
         String[] Nomi = new String[N];
     }
     
+    
+       //###############################
+    // ES 4 DUPLICATI #######################
+    
+    static void duplicati(String[] nome){
+        // Array per contenere i nomi unici
+        String[] noDuplic = new String[nome.length];
+        int c = 0; // Indice per tenere traccia dell'ultimo indice utilizzato in nomiUnici
+        // Ciclo per scorrere gli elementi di Nomi
+        for (int i = 0; i < nome.length; i++) {
+            boolean duplic = false; // Flag per indicare se l'elemento è duplicato
+            // Ciclo per controllare se l'elemento corrente è già presente in nomiUnici
+            for (int j = 0; j < c; j++) {
+                if (nome[i].equals(noDuplic[j])) {
+                    duplic = true;
+                    break;
+                }
+            }
+            // Se l'elemento non è duplicato, lo aggiungiamo a nomiUnici
+            if (duplic==false) {
+                noDuplic[c] = nome[i];
+                c++; // Incrementiamo lastIndex per il prossimo elemento unico
+            }
+        }
+        // Creiamo un nuovo array per contenere solo i nomi unici e con dimensione lastIndex
+        String[] nomiUniciFinal = new String[c];
+        for (int i = 0; i < c; i++) {
+            nomiUniciFinal[i] = noDuplic[i];
+        }
+        stampaArrayStringhe(nomiUniciFinal);
+    }
  
     /*
     • Data una matrice A(M,N) determinare l’elemento massimo e l’elemento minimo 
@@ -319,6 +359,70 @@ media e il relativo giudizio (1/3 = gravemente insufficiente, 4/5 =insufficient
     
     */
     
-    
+    public static void alunni(){
+        int n,m=5;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Inserisci il numero di studenti: ");
+        n = input.nextInt();
+        String[] nomi=new String[n];
+        int[][] voti=new int[n][m];
+ 
+        input.nextLine(); 
+        for (int i = 0; i<n; i++) {
+            System.out.print("Inserisci il nome dello studente "+ (i) +": ");
+            nomi[i]=input.nextLine(); 
+        }
+        
+        for (int i=0; i<n; i++) {
+            System.out.println("*****Studente " +nomi[i]+ "*****: ");
+            for (int j=0; j<m; j++) {
+                System.out.println("Inserisci il voto " +(j+1)+ " per lo studente " +(i+1)+ ": ");
+                voti[i][j] = input.nextInt();
+            }       
+        }
+        
+        double[] media = new double[n];
+        for (int i=0; i<n; i++){
+            double somma=0;
+            for (int j=0; j<m; j++){
+                somma+=voti[i][j];
+            }
+            media[i]=somma/m;
+            System.out.println("La media dello studente "+nomi[i]+" è: "+media[i]);
+        }
+        
+        double mediatot=0;
+        for (int i=0; i<n; i++) {
+            mediatot+=media[i];
+        }
+        mediatot/=n;
+        System.out.println("La media tot degli studenti è "+mediatot);
+
+        System.out.println("Nome dello studente\tMedia\tGiudizio");
+        String giudizio="";
+        for (int i = 0; i < n; i++) {
+            
+            if(media[i]>=0 && media[i]<3){
+                giudizio="Gravemente insufficiente";
+            }
+            if(media[i]>=3 && media[i]<5){
+                giudizio="Insufficiente";
+            }
+            if(media[i]>=5 && media[i]<6){
+                giudizio="Lievemente insufficiente";
+            }
+            if(media[i]>=6 && media[i]<7){
+                giudizio="Sufficiente";
+            }
+            if(media[i]>=7 && media[i]<8){
+                giudizio="Buono";
+            }
+            if(media[i]>=8 && media[i]<10){
+                giudizio="Eccellente";
+            }
+            System.out.println(nomi[i] + "\t\t\t" + media[i] + "\t\t" + giudizio);
+        }
+        
+    }
     
 }
