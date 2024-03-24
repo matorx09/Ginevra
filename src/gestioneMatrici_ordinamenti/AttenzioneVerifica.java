@@ -2,15 +2,16 @@
 package gestioneMatrici_ordinamenti;
 import java.util.*;
 
-/**
- *
- * @author Utente
+/*
+Utilizzare i commenti per separare le varie parti ed utilizzare opportunamente 
+le istruzioni di output per stampare a video informazioni utili per verificare 
+il corretto funzionamento del programma 
+
+Suggerimento: per ridurre i tempi di test, create nel main degli array con dei 
+dati predefiniti, SENZA chiedere di inserire tali dati all'utente.
  */
 public class AttenzioneVerifica {
 
-    /**
-     * @param args the command line arguments
-     */
     
     //main ******************************************************************************************
     public static void main(String[] args) {
@@ -21,18 +22,19 @@ public class AttenzioneVerifica {
             System.out.println("Caro utente scegli quale degli esercizi vuoi eseguire: ");
             System.out.println("1 per visualizzare le somme di neg e pos");
             System.out.println("2 per ordinamento con Bubble Sort");
-
+            System.out.println("3 per ordinamento con trova max e min in matrice");
             int metodo;
             Scanner inputUtente = new Scanner(System.in);
             metodo = inputUtente.nextInt();
 
             switch(metodo) {
                 case 1:
-                sommeNegPos();
-                  break;
+                    sommeNegPos();
+                    
                 case 2:
-                unioneOrdinataArray();
-
+                    unioneOrdinataArray();
+                case 3:
+                    trovaPosMax();
                 break;
                 default:
                     System.out.println("scelta non valida, ciao!");
@@ -87,7 +89,7 @@ Stampare a video il terzo output.
     
     //metodo di unione di due array ******************************************************************************************
     public static void unioneOrdinataArray(){
-        int n,m;
+        
         
         /*
         assegnazione casuale
@@ -98,11 +100,11 @@ Stampare a video il terzo output.
          */
         
         
-        
+        int n,m; // dimensioni
         Scanner inputUtente = new Scanner(System.in);
         System.out.println("Caro utente inserisce la dimensione del primo array: ");
         n = inputUtente.nextInt();
-        System.out.println("Inserisce la dimensione del secondo array");
+        System.out.println("Inserisci la dimensione del secondo array");
         m = inputUtente.nextInt();
         
         int [] A = new int [n];
@@ -173,7 +175,7 @@ Stampare a video il terzo output.
     }
     
     
-    //inizializzazione di due array qualsiasi ******************************************************************************************
+    //inizializzazione di un array qualsiasi ******************************************************************************************
     public static int[] inizializzaArray(int []array){
             //inizializzazione di array + stampa
         int min = 10;
@@ -196,6 +198,16 @@ Stampare a video il terzo output.
         System.out.println("");
     }
     
+    //stampa di un matrice bidi qualsiasi ******************************************************************************************
+    public static void stampaMatriceBidi(int [][]array, int righe, int colonne){
+        
+        for(int i = 0; i < righe; i++){
+            for(int j = 0; j < colonne; j++)
+                System.out.print(" " + array[i][j]);
+        }
+        System.out.println("");
+    }
+    
     //metodo di ordinamento Bubble Sort ******************************************************************************************
     public static int[] bubble(int []array){
         int temp;
@@ -208,7 +220,8 @@ Stampare a video il terzo output.
                  }
             }
         }
-        
+        //se l'array è lungo n, allora per ordinarlo
+        // nel caso perggiore mi servono n-1
         return array;
     }
     
@@ -231,6 +244,81 @@ Stampare a video il terzo output.
 
         return set.toArray(new String[0]);
     }
+    
+    
+    /*
+    • Dato quindi un array Nomi(M) contenente N nomi, ottenere un altro array 
+    nel quale siano stati eliminati I nomi  duplicati, e con i nomi rimanenti
+    ordinanti come nell’array originale
+    */
+    
+    public static void ordinaStringhe(){
+        int N = 0;
+        String[] Nomi = new String[N];
+    }
+    
+ 
+    /*
+    • Data una matrice A(M,N) determinare l’elemento massimo e l’elemento minimo 
+    comunicando anche la posizione (indice di riga e colonna) di tali elementi.
+    */
+    //******************************************************************
+    
+    public static void trovaPosMax(){
+        
+        int n, m, rigaMax = 0, colMax = 0, rigaMin = 0, colMin = 0;
+        int min = 10;
+        int max = 100;
+        
+        Scanner inputUtente = new Scanner(System.in);
+        System.out.println("Caro utente inserisci righe matrice: ");
+        n = inputUtente.nextInt();
+        System.out.println("Inserisci colonne matrice");
+        m = inputUtente.nextInt();
+        
+	int [][] A = new int [n][m];
+        
+        max = A[0][0];
+        min= A[0][0];
+        for(int i = 0; i < n; i++ ){
+            for(int j = 0; j < m; j++ ){
+                A[i][j] = (int)(Math.random() * (max - min + 1)) + min;
+                
+                
+                if(A[i][j] > max){
+                    max = A[i][j];
+                    rigaMax = i;
+                    colMax = j;
+                }
+                if(A[i][j] < min){
+                    min = A[i][j];
+                    rigaMin = i;
+                    colMin = j;
+                }
+            }
+        }
+        
+        System.out.println("La matrice stampata e': ");
+        stampaMatriceBidi(A, n, m);
+        System.out.println("Il massimo e' " + max + " alla riga " + rigaMax + ", colonna"+ colMax + ".");
+        System.out.println("Il minimo e' " + min + " alla riga " + rigaMin + ", colonna"+ colMin + ".");
+        
+	
+  
+    }
+    
+    
+    
+    /*
+    • Dato un array contenente i nomi di N studenti e una matrice numerica di 
+dimensioni N x 5 contenente i voti degli N studenti calcolare la media dei voti 
+di ciascuno studente e memorizzarla in un vettore MEDIA(N) e la media globale 
+dei voti degli N studenti. Stampare poi i nomi degli studenti, la corrispondente 
+media e il relativo giudizio (1/3 = gravemente insufficiente, 4/5 =insufficiente,
+6= sufficiente, 7= discreto, 8= buono, 9 = ottimo, 10 = eccellente)
+    
+    */
+    
     
     
 }
