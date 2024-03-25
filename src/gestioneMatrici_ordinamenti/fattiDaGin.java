@@ -38,8 +38,8 @@ public static boolean palindromo(int [][] a){
 int [] array = {0,0,0,0,0,0};
 boolean palindromo=true;
     for(int i=0;i<6;i++){ //e' sufficiente confrontare la priam meta dell'array con la sua seconda meta
-        for(int j=0; j<array; j++){
-            array[i]=array[i]+a[i][j];    
+        for(int j=0; j<array.length; j++){
+            array[i]=array[i]+a[i][j];
         }
     }
     
