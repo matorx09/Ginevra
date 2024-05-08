@@ -1,10 +1,24 @@
 package supermercato;
 
-//creare una ListaSpesa, inserire al suo interno dei prodotti (numero variabile tra 5 e 10, istanze di tutte le classi create
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+
+import java.util.GregorianCalendar;
+
+    
 public class Supermercato {
 
-   	 public static void main(String[] args) {
+    /**
+     * @param args the command line arguments
+     */
+
+     
+    
+    public static void main(String[] args) {
         ListaSpesa lista_mamma = new ListaSpesa ();
         Prodotto p1 = new Prodotto("1f2e3y4", "carne_bovina", 7);
         lista_mamma.aggiungiProdotto(p1);
@@ -14,23 +28,30 @@ public class Supermercato {
         lista_mamma.aggiungiProdotto(p3);
 	Prodotto p4 = new Prodotto("587", "sarago", 10);
         lista_mamma.aggiungiProdotto(p4);
-        
-        GregorianCalendar scadenza = new GregorianCalendar(2024,11,12);
-        Alimentare p5 = new Alimentare (scadenza, "587", "pesce", 10);
+        Prodotto p5 = new Prodotto("587", "sarago", 10);
+        lista_mamma.aggiungiProdotto(p4);
+        /*
+        GregorianCalendar scadenza2 = new GregorianCalendar(2024,05, 4);
+        Alimentare p5 = new Alimentare (scadenza2, "587", "pesce", 10);
         lista_mamma.aggiungiProdotto(p5);
-
-        lista_mamma.creaScontrino();
-        
-        
-        System.out.println("Il prezzo senza sconti e' " + lista_mamma.calcolaTotale(false));
+*/
+        System.out.println("La lista completa degli acquisti e' : " );
+        System.out.println(lista_mamma.creaScontrino());
+       
+       System.out.println("Il prezzo senza sconti e' " + lista_mamma.calcolaTotale(false));
+       
+       
         p1.applicaSconto();
         p2.applicaSconto();
         p3.applicaSconto();
         p4.applicaSconto();
         p5.applicaSconto();
+        System.out.println("Il prezzo con sconti e' " + lista_mamma.calcolaTotale(true));
+       
         
-        System.out.println("Il prezzo senza sconti e' " + lista_mamma.calcolaTotale(true));
+        System.out.println(lista_mamma.letturaNome("carne_bovina"));
+       
         
     }
+    
 }
-

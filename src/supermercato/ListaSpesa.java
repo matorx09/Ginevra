@@ -1,23 +1,33 @@
+package supermercato;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermercato;
+
 
 /**
  *
  * @author Utente
  */
 public class ListaSpesa {
-    int dim=5;
-    Prodotto[] prodotti = new Prodotto[dim];
-    private String scontrino;
+    private int dim=5;
+    private Prodotto[] prodotti;
+    private int numProdotti;
+    private String scontrino = "";
     
+    public ListaSpesa() {
+        this.dim = dim;
+        prodotti = new Prodotto[dim];
+        int numProdotti = 0;
+    }
+
     public String creaScontrino(){
         for (int i = 0; i < dim; i++) {
-            prodotti[i].stampa();
-            scontrino=scontrino.concat(prodotti[i].stampa())+"\n";
+            System.out.println(prodotti[i].stampa());
+            
+            /*scontrino = scontrino.concat(prodotti[i].stampa())+"\n";*/
         }
     return scontrino;
     }
@@ -26,32 +36,34 @@ public class ListaSpesa {
     float prezzoTot=0; 
         for(int i=0;i<dim;i++){
             if(sconto==false){
-            prezzoTot=prezzoTot+prodotti[i].getPrezzo();
+            prezzoTot = prezzoTot + prodotti[i].getPrezzo();
             }
             else{
-            prezzoTot=prezzoTot+prodotti[i].applicaSconto();   
+            prezzoTot = prezzoTot + prodotti[i].applicaSconto();   
             }
         }
     return prezzoTot;   
     }
     
-    public void aggiungiProdotto(Prodotto p){
-    Prodotto[] prodottiNuovi = new Prodotto [dim+1];
-        for (int i = 0; i < prodotti.length; i++) {
-            if(i==prodotti.length){
-                prodotti[i]=p;
-            }
+    public void aggiungiProdotto(Prodotto p) {
+        if (numProdotti < prodotti.length) {
+            prodotti[numProdotti] = p;
+            numProdotti++;
+        } else {
+            System.out.println("La lista della spesa è piena, impossibile aggiungere altri prodotti.");
         }
     }
     
     public String letturaNome(String nomeProdotto){
-    String risultato=null;
-        for (int i = 0; i < prodotti.length; i++) {
-            if(nomeProdotto==prodotti[i].getDescrizione()){
-            return risultato="il prodotto "+prodotti[i].getDescrizione()+" costa: "+prodotti[i].getPrezzo()+
-                    "mentre scontato: "+prodotti[i].applicaSconto();
+    String risultato = null;
+    String desc;
+        for (int i = 0; i < dim; i++) {
+            desc = prodotti[i].getDescrizione();
+            if( nomeProdotto == desc ){
+                System.out.println("il prodotto "+prodotti[i].getDescrizione()+" costa: "+prodotti[i].getPrezzo()+
+                    "mentre scontato: "+prodotti[i].applicaSconto()); ;
             }else {
-            return risultato= "prodotto non presente";
+                System.out.println("prodotto non presente"); 
             }
         }
     return risultato;

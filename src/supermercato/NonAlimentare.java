@@ -1,9 +1,11 @@
+package supermercato;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermercato;
+
 
 
 /**
@@ -28,7 +30,7 @@ public class NonAlimentare extends Prodotto {
         return super.stampa()+" materiale:"+materiale+".";
     }
     
-     @Override
+    @Override
     public float applicaSconto() {
         if(materiale=="carta"||materiale=="plastica"||materiale=="vetro"){
             int percentuale = 8;

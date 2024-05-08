@@ -1,9 +1,11 @@
+package supermercato;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermercato;
+
 
 /**
  *
@@ -33,8 +35,12 @@ public class Prodotto {
         return prezzo;
     }
     
+    public void setPrezzo(float prezzo){
+        this.prezzo = prezzo;
+    }
+    
     public float applicaSconto(){
-        prezzo=(prezzo*percentuale)/100;
+        prezzo = prezzo - (prezzo*percentuale)/100;
         return prezzo;
     }
     public String stampa(){
