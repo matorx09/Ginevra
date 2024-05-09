@@ -23,6 +23,12 @@ public class ListaSpesa {
         int numProdotti = 0;
     }
 
+    //applica lo sconto all'intero array prodotti
+    public void applicaScontiTot(){
+        for (int i = 0; i < dim; i++) {
+            prodotti[i].applicaSconto();
+        }
+    }
     public String creaScontrino(){
         for (int i = 0; i < dim; i++) {
             System.out.println(prodotti[i].stampa());
@@ -54,6 +60,8 @@ public class ListaSpesa {
         }
     }
     
+    
+    /*questo metodo va migliorato stampando solo le volte che il prodotto è presente nell'array*/
     public String letturaNome(String nomeProdotto){
     String risultato = null;
     String desc;
