@@ -78,15 +78,17 @@ public class Supermercato {
         //è necessario formatta l'oggetto gregorianCalendar prima di stamparlo
         //System.out.println("la scadenza di p5 e' il "+ p5.getScadenza() );
         
-        SimpleDateFormat scadenzaParsed =  new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
-        System.out.println( "la scadenza di p5 e' il "+scadenzaParsed.format( p5.getScadenza().getTime() ) );
+        SimpleDateFormat dataParsed =  new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println( "la scadenza di p5 e' il "+dataParsed.format( p5.getScadenza().getTime() ) );
         
         GregorianCalendar dataOggi = new GregorianCalendar();
         dataOggi.set(2024, 11, 25);
         
         
-        SimpleDateFormat dataOggiParsed =  new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
-        System.out.println("La data di oggi e' " + dataOggiParsed.format(dataOggi.getTime()));
+        //SimpleDateFormat dataOggiParsed =  new SimpleDateFormat("dd/MM/yyyy");
+        //uso lo stesso oggetto dataOggiParsed per non crearne un altro e risparmiare memoria
+        //tanto mi serve solo per aggiustare il formato data
+        System.out.println("La data di oggi e' " + dataParsed.format(dataOggi.getTime()));
         
         System.out.println("i giorni mancanti alla scandenza di p5 sono " + p5.giorniAllaScadenza(dataOggi));
 
